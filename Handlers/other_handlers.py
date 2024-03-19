@@ -13,7 +13,7 @@ main_chat_id = config.tg_main_chat.tg_main_chat_id
 
 
 router: Router = Router()
-keyboard_start = create_key(3, **LEXICON_MENU)
+keyboard_start = create_key(2, **LEXICON_MENU)
 
 @router.message(CommandStart())
 async def process_start_command(message: Message):
