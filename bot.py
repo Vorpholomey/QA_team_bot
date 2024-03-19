@@ -34,9 +34,9 @@ async def main() -> None:
                       start_date=datetime.now(), kwargs={'bot': bot})
     scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=10, minute=59,
                       start_date=datetime.now(), kwargs={'bot': bot})
-    scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=12, minute=30,
-                      start_date=datetime.now(), kwargs={'bot': bot})
-    scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=14, minute=59,
+    # scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=12, minute=30,
+    #                     start_date=datetime.now(), kwargs={'bot': bot})
+    scheduler.add_job(send_message_notification, trigger='cron', day_of_week='mon-fri', hour=19, minute=10,
                       start_date=datetime.now(), kwargs={'bot': bot})
     scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=16, minute=59,
                       start_date=datetime.now(), kwargs={'bot': bot})
