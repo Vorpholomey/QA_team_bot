@@ -1,14 +1,19 @@
 from aiogram import Router, Bot
 from aiogram.types import Message
-from aiogram.filters import CommandStart, Text
+from aiogram.filters import CommandStart, Command
+
+from config_date import config
+from config_date.config import Config, load_config
 from keyboard.keyboards import create_key
 from lexicon_ru import LEXICON_MENU, LEXICON_TIME
 
-chat_id = env('CHAT_ID')
-main_chat_id = env('MAIN_CHAT_ID')
+config: Config = load_config()
+chat_id = config.tg_chat.tg_chat_id
+main_chat_id = config.tg_main_chat.tg_main_chat_id
+
 
 router: Router = Router()
-keyboard_start = create_key(1, **LEXICON_MENU)
+keyboard_start = create_key(3, **LEXICON_MENU)
 
 @router.message(CommandStart())
 async def process_start_command(message: Message):
@@ -25,3 +30,7 @@ async def deach(message: Message, bot: Bot):
 @router.message(Command("пока"))
 async def deach(message: Message, bot: Bot):
     await bot.send_message(main_chat_id, LEXICON_TIME['bye'])
+
+@router.message(Command("предупреждение"))
+async def deach(message: Message, bot: Bot):
+    await bot.send_message(main_chat_id, LEXICON_TIME['notification'])

@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from background import keep_alive
 from Handlers import other_handlers
-from time_message import send_message_time, send_message_window, send_message_bye
+from time_message import send_message_time, send_message_window, send_message_bye, send_message_notification
 from datetime import datetime
 from config_date.config import *
 
@@ -23,7 +23,7 @@ async def main() -> None:
     logger.info('Start bot work')
     config: Config = load_config()
 
-    bot: Bot = Bot(token=config.tg_bot.token)
+    bot: Bot = Bot(token=config.tg_bot.tg_token)
     dp: Dispatcher = Dispatcher()
 
     scheduler = AsyncIOScheduler(timezone="Asia/Tomsk")

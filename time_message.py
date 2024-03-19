@@ -1,10 +1,13 @@
 from datetime import datetime
-from environs import Env
+
 from aiogram import Bot
+
+from config_date.config import Config, load_config
 from lexicon_ru import LEXICON_TIME
 
-chat_id = env('CHAT_ID')
-main_chat_id = env('MAIN_CHAT_ID')
+config: Config = load_config()
+chat_id = config.tg_chat.tg_chat_id
+main_chat_id = config.tg_main_chat.tg_main_chat_id
 
 async def send_message_time(bot:Bot):
     await bot.send_message(main_chat_id,LEXICON_TIME['time'])
