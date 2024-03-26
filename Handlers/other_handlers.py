@@ -34,3 +34,7 @@ async def deach(message: Message, bot: Bot):
 @router.message(Command("предупреждение"))
 async def deach(message: Message, bot: Bot):
     await bot.send_message(main_chat_id, LEXICON_TIME['notification'])
+
+@router.message(Command("зарядка"))
+async def deach(message: Message, bot: Bot):
+    await bot.send_message(main_chat_id, LEXICON_TIME['charge'])
