@@ -29,7 +29,7 @@ async def main() -> None:
 
     scheduler = AsyncIOScheduler(timezone="Asia/Tomsk")
 
-    scheduler.add_job(send_message_time, trigger='cron', day_of_week='mon-fri', hour=11, minute=1,
+    scheduler.add_job(send_message_time, trigger='cron', day_of_week='mon-fri', hour=11, minute=30,
                       start_date=datetime.now(), kwargs={'bot': bot})
     scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=9, minute=59,
                       start_date=datetime.now(), kwargs={'bot': bot})
