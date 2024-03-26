@@ -22,3 +22,6 @@ async def send_message_bye(bot:Bot):
 
 async def send_message_notification(bot:Bot):
   await bot.send_message(main_chat_id,LEXICON_TIME['notification'])
+
+async def send_message_charge(bot:Bot):
+  await bot.send_message(main_chat_id,LEXICON_TIME['charge'])

@@ -4,7 +4,8 @@ from aiogram import Bot, Dispatcher
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from background import keep_alive
 from Handlers import other_handlers
-from time_message import send_message_time, send_message_window, send_message_bye, send_message_notification
+from time_message import send_message_time, send_message_window, send_message_bye, send_message_notification, \
+    send_message_charge
 from datetime import datetime
 from config_date.config import *
 
@@ -32,7 +33,7 @@ async def main() -> None:
                       start_date=datetime.now(), kwargs={'bot': bot})
     scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=9, minute=59,
                       start_date=datetime.now(), kwargs={'bot': bot})
-    scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=10, minute=59,
+    scheduler.add_job(send_message_charge, trigger='cron', day_of_week='mon-fri', hour=10, minute=59,
                       start_date=datetime.now(), kwargs={'bot': bot})
     # scheduler.add_job(send_message_window, trigger='cron', day_of_week='mon-fri', hour=12, minute=30,
     #                     start_date=datetime.now(), kwargs={'bot': bot})
